@@ -1,0 +1,4 @@
+[submodule "src/ubuntu/install"]
+    path = src/ubuntu/install
+    url = https://github.com/kasmtech/workspaces-images/tree/develop/src/ubuntu/install
+    branch = develop

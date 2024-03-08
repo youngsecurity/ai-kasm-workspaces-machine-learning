@@ -1,4 +1,6 @@
+#FROM kasmweb/core-nvidia-focal:develop-rolling
 FROM kasmweb/core-nvidia-focal:develop-rolling
+
 
 USER root
 
@@ -9,12 +11,19 @@ WORKDIR $HOME
 
 ######### START CUSTOMIZATION ########
 
+# Build with sudo
+RUN apt-get update \
+    && apt-get install -y sudo \
+    && echo 'kasm-user ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
+    && rm -rf /var/lib/apt/list/*
+
 # install apt packages
-RUN apt-get update && apt-get install -y \
-        python3-pip libasound2 libegl1-mesa libgl1-mesa-glx \
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt-get update && apt upgrade -y && apt-get install -y \
+        openssl curl wget python3.11 python3-pip libasound2 libegl1-mesa libgl1-mesa-glx \
         libxcomposite1 libxcursor1 libxi6 libxrandr2 libxss1 \
-        libxtst6 gdal-bin ffmpeg vlc dnsutils iputils-ping \
-        git curl
+        libxtst6 gdal-bin ffmpeg dnsutils iputils-ping \
+        git
 
 # update pip and install python packages
 COPY resources/install_python_packages.sh /tmp/
@@ -29,6 +38,10 @@ USER 1000
 COPY resources/install_conda_packages.sh /tmp/
 #RUN bash /tmp/install_conda_packages.sh
 USER root 
+
+# Install Brew
+COPY resources/install_brew.sh /tmp/
+#RUN bash /tmp/install_brew.sh
 
 # Install nvtop
 COPY resources/install_nvtop.sh /tmp/
