@@ -21,8 +21,8 @@ COPY resources/install_python_packages.sh /tmp/
 RUN bash /tmp/install_python_packages.sh
 
 # Install Anaconda3
-#COPY resources/install_anaconda.sh /tmp/
-#RUN bash /tmp/install_anaconda.sh
+COPY resources/install_anaconda.sh /tmp/
+RUN bash /tmp/install_anaconda.sh
 
 # Install packages in conda environment
 USER 1000
@@ -66,9 +66,9 @@ RUN bash /tmp/install_brave.sh
 COPY resources/spyder.desktop $HOME/Desktop/
 COPY resources/jupyter.desktop $HOME/Desktop/
 #COPY resources/pycharm.desktop ${HOME}/Desktop/
-RUN cp /usr/share/applications/org.remmina.Remmina.desktop $HOME/Desktop/ \
-    && chmod +x $HOME/Desktop/org.remmina.Remmina.desktop \
-    && chown 1000:1000 $HOME/Desktop/org.remmina.Remmina.desktop
+#RUN cp /usr/share/applications/org.remmina.Remmina.desktop $HOME/Desktop/ \
+#    && chmod +x $HOME/Desktop/org.remmina.Remmina.desktop \
+#    && chown 1000:1000 $HOME/Desktop/org.remmina.Remmina.desktop
 
 
 ######### END CUSTOMIZATIONS ########
