@@ -29,7 +29,4 @@ else
     apt update
 
     apt install -y brave-browser
-EOL
-
 fi
-
