@@ -5,7 +5,7 @@ ARCH=$(uname -p)
 
 if [[ "${ARCH}" =~ ^aarch64$ ]] ; then
     # Install Brave Browser
-    apt install curl
+    apt install -y curl
 
     curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 
@@ -13,14 +13,14 @@ if [[ "${ARCH}" =~ ^aarch64$ ]] ; then
 
     apt update
 
-    apt install brave-browser
+    apt install -y brave-browser
 EOL
 
 else
     # Install Brave
 
     apt-get update
-    apt install curl
+    apt install -y curl
 
     curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 
@@ -28,7 +28,7 @@ else
 
     apt update
 
-    apt install brave-browser
+    apt install -y brave-browser
 EOL
 
 fi
