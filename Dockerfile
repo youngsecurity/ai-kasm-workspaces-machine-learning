@@ -1,6 +1,5 @@
 #FROM kasmweb/core-nvidia-focal:develop-rolling
-FROM kasmweb/core-nvidia-focal:develop-rolling
-
+FROM ubuntu:24.04
 
 USER root
 
@@ -54,7 +53,7 @@ COPY resources/install_qgis.sh /tmp/
 # Install Visual Studio Code
 #install VS code
 COPY resources/install_vscode.sh /tmp/
-RUN bash /tmp/install_vscode.sh
+#RUN bash /tmp/install_vscode.sh
 
 # Install PyCharm
 #RUN cd /opt/ \
