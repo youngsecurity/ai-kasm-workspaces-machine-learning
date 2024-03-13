@@ -1,5 +1,5 @@
 #FROM kasmweb/core-nvidia-focal:develop-rolling
-FROM ubuntu:24.04
+FROM youngsecurity/core-nvidia-ubuntu-24:develop-rolling
 
 USER root
 
